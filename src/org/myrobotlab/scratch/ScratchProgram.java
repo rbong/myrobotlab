@@ -10,7 +10,7 @@ import org.myrobotlab.scratch.gui.RefreshHandler;
  * 
  * based on the Scratch-Interface in the "hamster-simulator"
  * -> http://www.java-hamster-modell.de/scratch.html
- * by Jürgen Boger
+ * by J[ue]rgen Boger
  * this file dibo
  * @author LunDev (github), Ma. Vo. (MyRobotLab)
  * 

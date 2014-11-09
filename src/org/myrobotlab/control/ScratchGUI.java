@@ -1,12 +1,19 @@
 package org.myrobotlab.control;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 
 import org.myrobotlab.logging.LoggerFactory;
+import org.myrobotlab.scratch.ScratchPanel;
 import org.myrobotlab.service.GUIService;
 import org.myrobotlab.service._TemplateService;
 import org.slf4j.Logger;
@@ -30,7 +37,31 @@ public class ScratchGUI extends ServiceGUI implements ActionListener {
 	}
 
 	public void init() {
-		// Initialize GUI here
+		
+//		JButton button = new JButton("TEST");
+//		display.add(button);
+		
+		JFrame editorframe = new JFrame("Editor");
+		editorframe.setSize(800, 600);
+		editorframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JPanel panel = new JPanel();
+		panel.setSize(800, 600);
+		
+		//scratch
+		ScratchPanel p = new ScratchPanel();
+		JScrollPane scrollPane = new JScrollPane(p);
+		scrollPane.setBorder(BorderFactory.createEmptyBorder());
+		
+		panel.add(BorderLayout.CENTER, scrollPane);
+		display.add(panel);
+		
+		display.add(scrollPane);
+		
+		editorframe.getContentPane().add(BorderLayout.CENTER, scrollPane);
+		
+		editorframe.setLocation(50, 50);
+		editorframe.setVisible(true);
 	}
 
 	public void getState(_TemplateService template) {

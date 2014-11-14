@@ -41,27 +41,32 @@ public class ScratchGUI extends ServiceGUI implements ActionListener {
 //		JButton button = new JButton("TEST");
 //		display.add(button);
 		
+		/*
 		JFrame editorframe = new JFrame("Editor");
 		editorframe.setSize(800, 600);
 		editorframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		JPanel panel = new JPanel();
-		panel.setSize(800, 600);
+		*/
+		display.setLayout(new BorderLayout());
+		
+		//JPanel panel = new JPanel();
+		//panel.setSize(800, 600);
 		
 		//scratch
 		ScratchPanel p = new ScratchPanel();
 		JScrollPane scrollPane = new JScrollPane(p);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 		
-		panel.add(BorderLayout.CENTER, scrollPane);
-		display.add(panel);
+		//panel.add(BorderLayout.CENTER, scrollPane);
+		//display.add(panel);
 		
-		display.add(scrollPane);
+		display.add(BorderLayout.CENTER, scrollPane);
 		
+		/*
 		editorframe.getContentPane().add(BorderLayout.CENTER, scrollPane);
 		
 		editorframe.setLocation(50, 50);
 		editorframe.setVisible(true);
+		*/
 	}
 
 	public void getState(_TemplateService template) {

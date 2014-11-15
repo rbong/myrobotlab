@@ -5,9 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
@@ -37,36 +34,15 @@ public class ScratchGUI extends ServiceGUI implements ActionListener {
 	}
 
 	public void init() {
-		
-//		JButton button = new JButton("TEST");
-//		display.add(button);
-		
-		/*
-		JFrame editorframe = new JFrame("Editor");
-		editorframe.setSize(800, 600);
-		editorframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		*/
+
 		display.setLayout(new BorderLayout());
-		
-		//JPanel panel = new JPanel();
-		//panel.setSize(800, 600);
-		
-		//scratch
+
+		// scratch
 		ScratchPanel p = new ScratchPanel();
 		JScrollPane scrollPane = new JScrollPane(p);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
-		
-		//panel.add(BorderLayout.CENTER, scrollPane);
-		//display.add(panel);
-		
+
 		display.add(BorderLayout.CENTER, scrollPane);
-		
-		/*
-		editorframe.getContentPane().add(BorderLayout.CENTER, scrollPane);
-		
-		editorframe.setLocation(50, 50);
-		editorframe.setVisible(true);
-		*/
 	}
 
 	public void getState(_TemplateService template) {

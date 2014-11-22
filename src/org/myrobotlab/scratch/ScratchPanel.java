@@ -270,6 +270,10 @@ public class ScratchPanel extends JPanel implements MouseListener,
 	public TabPanel getTabPanel() {
 		return this.tabPanel;
 	}
+	
+	public String getSourceCode() {
+		return program.getSourceCode();
+	}
 
 	/**
 	 * Da beim Docken mehrere Parameter zur�ckgeliefert werden m�ssten, wird

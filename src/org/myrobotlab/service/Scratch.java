@@ -1,10 +1,16 @@
 package org.myrobotlab.service;
 
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
+
 import org.myrobotlab.framework.Service;
 import org.myrobotlab.logging.Level;
 import org.myrobotlab.logging.LoggerFactory;
 import org.myrobotlab.logging.Logging;
 import org.myrobotlab.logging.LoggingFactory;
+import org.myrobotlab.scratch.ScratchPanel;
 import org.slf4j.Logger;
 
 /**
@@ -38,6 +44,24 @@ public class Scratch extends Service {
 	@Override
 	public String getDescription() {
 		return "graphical programming interface";
+	}
+
+	public void top_exportcode(ScratchPanel middle) {
+		String code = middle.getSourceCode();
+
+		JFrame frame = new JFrame();
+		JTextArea textarea = new JTextArea();
+		textarea.setText(code);
+		textarea.setEditable(false);
+		textarea.setLineWrap(true);
+		JScrollPane scrollpane = new JScrollPane(textarea);
+		scrollpane
+				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollpane
+				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		frame.add(scrollpane);
+		frame.pack();
+		frame.setVisible(true);
 	}
 
 	public static void main(String[] args) throws InterruptedException {

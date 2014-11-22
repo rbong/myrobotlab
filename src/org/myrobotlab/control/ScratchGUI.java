@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
@@ -28,6 +30,10 @@ public class ScratchGUI extends ServiceGUI implements ActionListener {
 	public final static Logger log = LoggerFactory.getLogger(ScratchGUI.class
 			.getCanonicalName());
 
+	JButton top_exportcode;
+	
+	ScratchPanel middle;
+
 	public ScratchGUI(final String boundServiceName,
 			final GUIService myService, final JTabbedPane tabs) {
 		super(boundServiceName, myService, tabs);
@@ -37,12 +43,26 @@ public class ScratchGUI extends ServiceGUI implements ActionListener {
 
 		display.setLayout(new BorderLayout());
 
-		// scratch
-		ScratchPanel p = new ScratchPanel();
-		JScrollPane scrollPane = new JScrollPane(p);
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+
+		// top - menu
+		JPanel north = new JPanel();
+
+		top_exportcode = new JButton("Export Code");
+		top_exportcode.addActionListener(this);
+		north.add(top_exportcode);
+
+		panel.add(BorderLayout.NORTH, north);
+
+		// center - Scratch
+		middle = new ScratchPanel();
+		JScrollPane scrollPane = new JScrollPane(middle);
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 
-		display.add(BorderLayout.CENTER, scrollPane);
+		panel.add(BorderLayout.CENTER, scrollPane);
+
+		display.add(panel);
 	}
 
 	public void getState(_TemplateService template) {
@@ -76,10 +96,9 @@ public class ScratchGUI extends ServiceGUI implements ActionListener {
 		Object o = ae.getSource();
 
 		// Button - Events
-		// if (o == control_connect) {
-		// myService
-		// .send(boundServiceName, "control_connect", control_connect);
-		// }
+		if (o == top_exportcode) {
+			myService.send(boundServiceName, "top_exportcode", middle);
+		}
 		myService.send(boundServiceName, "publishState");
 	}
 }

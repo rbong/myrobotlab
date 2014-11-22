@@ -15,8 +15,6 @@ import javax.swing.JPanel;
 
 import org.myrobotlab.scratch.Renderable.RType;
 import org.myrobotlab.scratch.elements.BooleanObject;
-import org.myrobotlab.scratch.elements.BooleanPrintRoot;
-import org.myrobotlab.scratch.elements.VoidPrintRoot;
 import org.myrobotlab.scratch.elements.voids.ReturnBooleanObject;
 import org.myrobotlab.scratch.gui.ClickHandler;
 import org.myrobotlab.scratch.gui.ContextMenu;
@@ -146,67 +144,67 @@ public class ScratchPanel extends JPanel implements MouseListener,
 		setTextArea();
 	}
 
-	/**
-	 * Liefert alle Elemente, die am RootElement h�ngen als Bild zur�ck.
-	 * Sollten keine Elemente am RootElement angedockt sein, so wird null
-	 * zur�ckgeliefert.
-	 * 
-	 * @return Bild der Elemente oder null.
-	 */
-	public BufferedImage getImage() {
-		Renderable element = null;
-
-		if (method.getType() == RType.BOOLEAN)
-			element = new BooleanPrintRoot(method.getName());
-		else
-			element = new VoidPrintRoot(method.getName());
-
-		Renderable r = rootElement.next;
-		element.addAsNext(r);
-
-		BoundingBox bounding = element.getGlobalBounding();
-		BufferedImage img = new BufferedImage(bounding.getWidth() + 1,
-				bounding.getHeight() + 4, BufferedImage.TYPE_INT_RGB);
-		Graphics g = img.getGraphics();
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, img.getWidth(), img.getHeight());
-		g.translate(-element.getX(), -element.getY());
-		element.render(g);
-
-		return img;
-	}
-
-	public BufferedImage[] getImages() {
-		Method[] methods = getStorageController().getAllMethods();
-		BufferedImage[] images = new BufferedImage[methods.length];
-		for (int i = 0; i < images.length; i++) {
-			images[i] = getImage(methods[i]);
-		}
-		return images;
-	}
-
-	public BufferedImage getImage(Method m) {
-		Renderable element = null;
-
-		if (m.getType() == RType.BOOLEAN)
-			element = new BooleanPrintRoot(m.getName());
-		else
-			element = new VoidPrintRoot(m.getName());
-
-		Renderable r2 = m.getRootElement().next;
-		element.addAsNext(r2);
-
-		BoundingBox bounding = element.getGlobalBounding();
-		BufferedImage img = new BufferedImage(bounding.getWidth() + 1,
-				bounding.getHeight() + 4, BufferedImage.TYPE_INT_RGB);
-		Graphics g = img.getGraphics();
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, img.getWidth(), img.getHeight());
-		g.translate(-element.getX(), -element.getY());
-		element.render(g);
-
-		return img;
-	}
+//	/**
+//	 * Liefert alle Elemente, die am RootElement h�ngen als Bild zur�ck.
+//	 * Sollten keine Elemente am RootElement angedockt sein, so wird null
+//	 * zur�ckgeliefert.
+//	 * 
+//	 * @return Bild der Elemente oder null.
+//	 */
+//	public BufferedImage getImage() {
+//		Renderable element = null;
+//
+//		if (method.getType() == RType.BOOLEAN)
+//			element = new BooleanPrintRoot(method.getName());
+//		else
+//			element = new VoidPrintRoot(method.getName());
+//
+//		Renderable r = rootElement.next;
+//		element.addAsNext(r);
+//
+//		BoundingBox bounding = element.getGlobalBounding();
+//		BufferedImage img = new BufferedImage(bounding.getWidth() + 1,
+//				bounding.getHeight() + 4, BufferedImage.TYPE_INT_RGB);
+//		Graphics g = img.getGraphics();
+//		g.setColor(Color.WHITE);
+//		g.fillRect(0, 0, img.getWidth(), img.getHeight());
+//		g.translate(-element.getX(), -element.getY());
+//		element.render(g);
+//
+//		return img;
+//	}
+//
+//	public BufferedImage[] getImages() {
+//		Method[] methods = getStorageController().getAllMethods();
+//		BufferedImage[] images = new BufferedImage[methods.length];
+//		for (int i = 0; i < images.length; i++) {
+//			images[i] = getImage(methods[i]);
+//		}
+//		return images;
+//	}
+//
+//	public BufferedImage getImage(Method m) {
+//		Renderable element = null;
+//
+//		if (m.getType() == RType.BOOLEAN)
+//			element = new BooleanPrintRoot(m.getName());
+//		else
+//			element = new VoidPrintRoot(m.getName());
+//
+//		Renderable r2 = m.getRootElement().next;
+//		element.addAsNext(r2);
+//
+//		BoundingBox bounding = element.getGlobalBounding();
+//		BufferedImage img = new BufferedImage(bounding.getWidth() + 1,
+//				bounding.getHeight() + 4, BufferedImage.TYPE_INT_RGB);
+//		Graphics g = img.getGraphics();
+//		g.setColor(Color.WHITE);
+//		g.fillRect(0, 0, img.getWidth(), img.getHeight());
+//		g.translate(-element.getX(), -element.getY());
+//		element.render(g);
+//
+//		return img;
+//	}
 
 	/**
 	 * Beim jeden Erstellen des Panels wird versucht die statischen
@@ -267,9 +265,9 @@ public class ScratchPanel extends JPanel implements MouseListener,
 		return c;
 	}
 
-	public TabPanel getTabPanel() {
-		return this.tabPanel;
-	}
+//	public TabPanel getTabPanel() {
+//		return this.tabPanel;
+//	}
 	
 	public String getSourceCode() {
 		return program.getSourceCode();

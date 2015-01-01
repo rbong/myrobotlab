@@ -2,16 +2,12 @@ package org.myrobotlab.scratch;
 
 import java.util.ArrayList;
 
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
 import org.myrobotlab.scratch.Renderable.RType;
 import org.myrobotlab.scratch.elements.RootBooleanObject;
 import org.myrobotlab.scratch.elements.RootVoidObject;
 import org.myrobotlab.scratch.elements.voids.FunctionResultException;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 /**
  * Die Klasse Method speichert alle Inhalte einer Methode. Die komplette
@@ -189,43 +185,6 @@ public class Method {
 			r.rename(fromName, toName);
 
 		rootElement.rename(fromName, toName);
-	}
-
-	/**
-	 * Schreibt den Inhalt der Methode in ein XML-Document. Das XML-Document
-	 * muss von ausserhalb bereits vorbereitet worden sein, mit dem
-	 * Startelement.
-	 * 
-	 * @param writer
-	 *            Der writer, in dem das XML aufgebaut wird.
-	 * @throws XMLStreamException
-	 */
-	public void toXML(XMLStreamWriter writer) throws XMLStreamException {
-		writer.writeStartElement("METHOD");
-		writer.writeAttribute("NAME", name);
-		writer.writeAttribute("TYPE", rType.toString());
-		writer.writeAttribute("OPENED", opened ? "T" : "F");
-
-		// dibo 13.08.2010
-		writer.writeAttribute("SELECTED", selected ? "T" : "F");
-
-		// Root Element schreiben
-		writer.writeStartElement("ROOTELEMENT");
-		Renderable root = rootElement.next;
-		if (root != null)
-			root.toXML(writer);
-		writer.writeEndElement();
-
-		// Renderables schreiben
-		for (Renderable r : renderables) {
-			writer.writeStartElement("RENDERSTACK");
-			writer.writeAttribute("TOP", r.getY() + "");
-			writer.writeAttribute("LEFT", r.getX() + "");
-			r.toXML(writer);
-			writer.writeEndElement();
-		}
-
-		writer.writeEndElement();
 	}
 
 	/**

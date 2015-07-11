@@ -91,7 +91,6 @@
 	<classpathentry kind="lib" path="/repo/org.atmosphere.nettosphere/2.3.0/javax.inject-1.jar"/>
 	<classpathentry kind="lib" path="/repo/org.bytedeco.ffmpeg/2.6.1/ffmpeg-2.6.1-1.0-20150502.231737-1-windows-x86_64.jar"/>
 	<classpathentry kind="lib" path="/repo/org.bytedeco.ffmpeg/2.6.1/ffmpeg-2.6.1-0.11.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/bluecove/bluecove.jar"/>
-	<classpathentry kind="lib" path="/usr/share/java/bluecove/bluecove-gpl.jar"/>
+	<classpathentry kind="lib" path="/repo/net.sf.bluecove/2.1.0/bluecove.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

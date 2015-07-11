@@ -12,7 +12,7 @@ import org.myrobotlab.logging.Logging;
 import org.myrobotlab.logging.LoggingFactory;
 import org.slf4j.Logger;
 
-public class RemoteStreamInput extends Service {
+public class RemoteInputStream extends Service {
 
 	private static final long serialVersionUID = 1L;
 
@@ -20,13 +20,13 @@ public class RemoteStreamInput extends Service {
 	URL url = null;
 
 	public final static Logger log = LoggerFactory
-			.getLogger(RemoteStreamInput.class);
+			.getLogger(RemoteInputStream.class);
 
 	public static void main(String[] args) {
 		LoggingFactory.getInstance().configure();
 		LoggingFactory.getInstance().setLevel(Level.INFO);
 
-		try {
+		/* try {
 
 			RemoteStreamInput template = (RemoteStreamInput) Runtime.start(
 					"template", "_TemplateService");
@@ -36,10 +36,10 @@ public class RemoteStreamInput extends Service {
 
 		} catch (Exception e) {
 			Logging.logError(e);
-		}
+		} */
 	}
 
-	public RemoteStreamInput(String n) {
+	public RemoteInputStream(String n) {
 		super(n);
 	}
 
